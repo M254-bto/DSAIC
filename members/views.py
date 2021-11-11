@@ -57,7 +57,7 @@ def member_update(request, pk):
     member = MemberModel.objects.get(id=pk)
     form = MemberCreateForm(instance=member)
     if request.method == 'POST':
-        form = MemberCreateForm(request.POST, instance=member)
+        form = MemberCreateForm(request.POST, instance=member) 
         if form.is_valid():
             form.save()
             redirect('members:mem-detail')
@@ -79,3 +79,29 @@ class MemberUpdateView(generic.UpdateView):
 
     def get_success_url(self):
         return redirect('members:mem-list')
+
+
+
+#Delete views
+
+        #function based
+
+def member_delete(request, pk):
+        member = MemberModel.objects.get(id=pk)
+        member.delete()
+        return redirect('members:mem-list')
+
+        #generic view
+
+
+class MemberDeleteView(generic.DeleteView):
+    model = MemberModel
+    context_object_name = 'member'
+
+    def get_queryset(self):
+        return MemberModel.objects.all()
+
+    def get_success_url(self):
+        return reverse('members/list.html')
+
+        

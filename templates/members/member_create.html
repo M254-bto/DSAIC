@@ -2,12 +2,51 @@
 
 {% block members-content %}
 
+
+
+
+
+
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>Add new Member</h1>
+      </div>
 <form method='POST'>
 {% csrf_token %}
+      <div class="login-form">
+        <div class="control-group">
+        {{form.first_name}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
 
-{{form.as_p}}
-<button type='submit'>create</button>
-</form>
+<div class="control-group">
+        {{form.last_name}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+         <div class="control-group">
+        {{form.reg}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+         <div class="control-group">
+        {{form.course}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+         <div class="control-group">
+        {{form.year}}
+        <label class="login-field-icon fui-user" for="login-name"></label>
+        </div>
+
+
+        <Button class="btn btn-primary btn-large btn-block" type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
 
 
 {% endblock members-content %}
